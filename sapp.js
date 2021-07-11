@@ -31,9 +31,10 @@ const isAuth = require("./middleware/auth");
 
 
 const port = process.env.PORT;
+const url = "mongodb+srv://austinakamelu:austin_1996@cluster0.3dohv.mongodb.net/bitufy"
 const sapp = express();
 const store = new MongoStore({
-    uri: process.env.MONGO_URL,
+    uri: process.env.MONGO_URL || url,
     collection: "sessions"
 })
 
