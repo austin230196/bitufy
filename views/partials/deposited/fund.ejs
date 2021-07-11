@@ -1,0 +1,116 @@
+<div class="container-fluid">
+    <div class="container"  id="fund_account">
+    <h1><i class="fas fa-cash-register"></i>
+      Deposit</h1>
+      <p>Please copy and send the exact token value to the token address
+        of your choice.
+      </p>
+      <p>
+          <b>NOTE: </b>
+          Please copy and send the exact token value (BTC/ETH) to the given
+          address below.
+      </p>
+
+      <hr 
+      style="background-color: grey; 
+      width: 100%; margin-top: 30px; 
+      margin-bottom: 10px"/>
+
+      <div id="fund_address">
+          <p id="fund_feedback" style="display: none;"></p>
+          <h1 style="width: 100%;"><i class="fas fa-clipboard-list"></i>
+              Transaction Details</h1>
+
+              <div class="form-group mt-4">
+                <label for="deposit_code">Deposit Code:</label>
+                  <input type="text" name="deposit_code"  id="deposit_code"
+                  value="<%=  meta.deposit_code  %>"  disabled style="border-radius: 4px;" />
+                  <!-- <i class="fas fa-copy" class="fund_add_copy"
+                  data-bs-toggle="tooltip"  style="cursor: pointer"
+                  data-bs-placement="right" title="Copy"></i> -->
+            </div>
+
+            <input type="hidden" id="user_id"
+             name="user_id"
+            value="<%=  meta.userId  %>" 
+             style="border-radius: 4px;" />
+
+            <div class="form-group mt-2">
+                <label for="deposit_amount">Deposit Amount: </label>
+                <div class="deposit_group">
+                  <input type="number" class="input" name="deposit_amount"  id="deposit_amount"
+                   style="border-radius: 4px;" value="1" />
+                <i class="fas fa-dollar-sign" style="cursor: pointer"></i>
+                </div>
+                <p>
+                    <em>
+                        <small id="deposit_amount_feed">
+                            Deposit Amount must be greater than $50.
+                        </small>
+                    </em>
+                </p>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="amount_btc">Amount in BTC:</label>
+                <div class="deposit_group">
+                  <input type="text" name="amount_btc"  id="amount_btc"
+                   disabled style="border-radius: 4px;"  />
+                  <i class="fab fa-bitcoin" style="cursor: pointer"></i>
+                </div>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="amount_eth">Amount in ETH:</label>
+                <div class="deposit_group">
+                  <input type="text" name="amount_eth"  id="amount_eth"
+                   disabled style="border-radius: 4px;" />
+                   <i class="fab fa-ethereum"  style="cursor: pointer"></i>
+                </div>
+            </div>
+
+
+            <hr 
+            style="background-color: grey; 
+            width: 100%; margin-top: 30px; 
+            margin-bottom: 10px"/>
+
+          <div class="wallet mx-auto">
+              <h1 style="width: 100%;">Pay to either of the addresses</h1>
+
+              <p>
+                  Please select the token you are depositing your 
+                  investment funds into.
+              </p>
+              <%   for(let address of addresses){   %>
+                <div class="addresses mt-4 mx-auto">
+                    <h4><%=  address.name.toLocaleUpperCase()  %></h4>
+                      <input type="text" name="<%=  address.name  %>"
+                      value="<%=  address.address  %>"  disabled  />
+                      <i class="fas fa-copy" class="fund_add_copy"
+                      data-bs-toggle="tooltip"  style="cursor: pointer"
+                      data-bs-placement="right" title="Copy"></i>
+                      <button class="btn btn-sm btn-filled btn-info"
+                       id="<%=  address.name  %>_btn">
+                       Select
+                    </button>
+                </div>
+              <%   }   %>  
+          </div>
+         
+
+          <p class="mt-4"><b>NOTE: </b>  Click on the button only after you have deposited the investment funds
+            in the address above, to begin confirmation phase.
+           </p>
+            <button class="btn withdrawn" id="deposited_button" disabled>
+                Deposited    <i class="fas fa-cash-register"></i>
+            </button>
+      </div>
+
+      <hr 
+      style="background-color: grey; 
+      width: 100%; margin-top: 30px; 
+      margin-bottom: 10px"/>
+      
+</div>
+</div>

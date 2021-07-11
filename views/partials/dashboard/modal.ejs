@@ -1,0 +1,90 @@
+
+	<div class="section">
+        <div class="modal">		
+            <div class="modal-wrap" name="first">	
+                <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_y33ep5da.json" 
+                    background="transparent"  speed="2"  
+                    style="width: 400px; height: 400px; margin: 0" 
+                    autoplay>
+                </lottie-player>
+                <h3>We need more information</h3>
+                <p>We need you to add your phone number and also create your Bitufy pin to further secure your account.</p>	     
+                <div class="modal-button">
+                    <button>Continue</button> 
+                </div>   		
+            </div>	
+            
+            <div class="modal-wrap" name="second" style="display: none">	
+                <h3 style="text-align: left; margin-top: 30px">Create your Bitufy PIN</h3>
+                <p style="text-align: left">This 4-digit pin protects your account from unauthorized transactions.</p>
+                <div class="modal-body">
+                    <div class="first">
+                        <label>Create your PIN</label>
+                        <div class="modal-body-data">
+                            <div contenteditable="true"></div>
+                            <div contenteditable="true"></div>
+                            <div contenteditable="true"></div>
+                            <div contenteditable="true"></div>
+                        </div>
+                    </div>
+                    <div class="second">
+                        <label>Confirm your PIN</label>
+                        <div class="modal-body-data">
+                            <div contenteditable="true"></div>
+                            <div contenteditable="true"></div>
+                            <div contenteditable="true"></div>
+                            <div contenteditable="true"></div>
+                        </div>
+                    </div>
+                </div>	     
+                <div class="modal-button">
+                    <button disabled>
+                        <!-- <%- include("./loader")  %> -->
+                        &nbsp; &nbsp;
+                        Create PIN
+                    </button> 
+                </div>   		
+            </div>
+
+            <div class="modal-wrap" name="third" style="display: none">	
+                <h3 style="text-align: left; margin-top: 30px">Add your phone number</h3>
+                <p style="text-align: left; margin-bottom: 50px;">This 11-digit phone number acts as an alternative to email address for getting our latest news.</p>
+                <div class="phone">
+                    <div class="country">
+                        <label>Country</label>
+                        <div>
+                            <span>
+                                <img src="https://www.countryflags.io/<%= code %>/flat/32.png">
+                            </span>
+                            <input type="text" name="country" value="<%=  users.find(u => u.username === session.user.username).country  %>" disabled />
+                        </div>
+                    </div>
+
+                    <div class="number">
+                        <label>Phone</label>
+                        <div>
+                            <span>+31</span>
+                            <input type="number" name="phone" placeholder="6234782223"  required />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-data">
+                    <div class="dob">
+                        <label>Date of Birth</label>
+                        <div class="modal-body-input">
+                            <input type="number" required placeholder="DD" name="day" style="margin-left: 0"/>
+                            <input type="number" required placeholder="MM" name="month" />
+                            <input type="number" required placeholder="YYYY" name="year" />
+                        </div>
+                    </div>
+                </div>	     
+                <div class="modal-button">
+                    <button disabled>
+                        <!-- <%- include("./loader")  %> -->
+                        &nbsp; &nbsp;
+                        Update
+                    </button> 
+                </div>   		
+            </div>
+        </div>
+  </div>

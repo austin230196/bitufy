@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sign Up</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/library/css/fontawesome-all.min.css">	
+    <link rel="stylesheet" href="/library/css/auth.css">
+  </head>
+
+  <body>
+    <div class="loader">
+      <%- include("./partials/loader")  %>
+      <h5>Account setup in progress....</h5>
+    </div>
+    <div class="auth-container">
+      <div class="auth-nav">
+        <img src="/library/img/logo.jpeg" alt="Logo" >
+        <span>Already have an account? <a href="/auth/login">Signin</a></span>
+      </div>
+
+      <div class="auth-body">
+        <div class="row" style="width: 100%;padding: 0;margin: 0; height: 100% !important;">
+          <div class="col-xs-12 col-sm-7 col-md-7 col-lg-6" style="height: 100%;padding: 0;">
+            <form>
+              <div class="label">
+                  Register
+              </div>
+              <hr style="
+              width: 100%;
+              background-color: rgba(114, 20, 206, .3);
+              border: none;
+              height: 1px;
+              margin-bottom: 25px;
+              margin-top: 5px;
+              "/>
+              
+
+              <input type="hidden" name="_csrf" value="<%= token %>">
+
+
+              <% inputs.forEach(({  
+                type, name, id, 
+                placeholder, s_icon,
+                icon, required
+              }, i) => {   %>
+                <div class="form_group">
+                  <i class="<%= icon %>"></i>
+                  <input type="<%= type %>" name="<%= name %>"
+                  placeholder="<%= placeholder %>" id="<%= id %>"
+                  required="<%= required %>" />
+                  <%    if(s_icon){      %>
+                    <i  onclick="toggleVission(this)"  class="fas fa-eye" id="<%=name%>-icon"></i>
+                  <%     }   %>
+              </div>
+              <%  })  %>
+
+              <div class="form_group">
+                <i class="fas fa-globe"></i>
+                <%-  include("./partials/signup/Countries")  %>
+              </div>
+
+              <p class="signup_feedback"></p>
+
+          <div class="form_group_button">
+            <button href="#" 
+            title="Click here to complete registration!!" 
+            class="btn-style btn-filled btn-filled-2">
+            <i class="fas fa-cogs"></i>Setup Account</button>
+          </div>
+      
+          </form>
+          </div>
+
+          <div class="drawing col-sm-5 col-md-5 col-lg-6" style="height: 100%;">
+              <img src="/library/img/auth_bg.jpeg" alt="Auth" >
+              <div class="auth_writeup" style="min-height: 20vh;">
+                <p style="
+                padding: 20px;
+                font-size: 0.9rem;
+                padding-top: 10px;
+                ">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                   Ut, autem at neque minima laboriosam hic velit officiis 
+                </p>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-footer">
+        <footer>
+          By signing up you agree with our <a href="#">Terms of Service</a>
+        </footer>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   <!-- Latest jQuery -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="/library/js/jquery-2.2.4.min.js"></script>
+   <!-- popper js -->
+   <script src="/library/bootstrap/js/popper.min.js"></script>
+   <!-- Latest compiled and minified Bootstrap -->
+   <script src="/library/bootstrap/js/bootstrap.min.js"></script>
+   <script src="/library/js/auth.js"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })()
+    </script>
+  </body>
+</html>

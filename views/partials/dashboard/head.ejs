@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Austin Akamelu">
+  <title>Dashboard</title>
+  <!-- Favicon -->
+  <!-- <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png"> -->
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="/library/css/fontawesome-all.min.css">	
+  <link rel="stylesheet" href="/library/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="/library/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <!-- Page plugins -->
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="/library/css/argon.css" type="text/css">
+  <link rel="stylesheet" href="/library/css/custom.css" type="text/css">
+  <style>
+      * {
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+      }
+        .ccc-widget > div {
+          border: 6px solid rgb(114, 20, 206) !important;
+        }
+
+        .ccc-widget > div:first-child {
+          border: none !important;
+        }
+        .cryptocompare-logo {
+          display: none
+        }
+
+        .chartTypeTabLinks:hover {
+          background-color: rgba(114, 20, 206, .7) !important;
+        }
+
+        #nav {
+          background-color: rgb(114, 20, 206) !important;
+        }
+
+        #header {
+          background-color: rgb(114, 20, 206) !important;
+        }
+
+        .cTypeTabActive {
+          background-color: rgba(114, 20, 206, .7) !important;
+        }
+
+
+      /* PROGRESS BAR */
+      .progress-title{
+        font-size: 18px;
+        font-weight: 700;
+        font-style: italic;
+        color: #212529;
+        margin: 0 0 10px;
+      }
+      .progress{
+          height: 10px;
+          background: #e9e9ea;
+          border-radius: 15px;
+          margin-bottom: 30px;
+          overflow: visible;
+          position: relative;
+      }
+      .progress:before,
+      .progress:after{
+          content: "";
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: #fff;
+          position: absolute;
+          top: -5px;
+          left: 0;
+          z-index: 1;
+      }
+      .progress:after{
+          border: 7px solid #e9e9ea;
+          left: auto;
+          right: 0;
+      }
+      .progress .progress-bar{
+          box-shadow: none;
+          border: none;
+          border-radius: 15px;
+          position: relative;
+          -webkit-animation: animate-positive 1s;
+          animation: animate-positive 1s;
+      }
+      .progress .progress-value{
+          width: 70px;
+          height: 35px;
+          line-height: 27px;
+          border-radius: 20px;
+          background: #fff;
+          font-size: 17px;
+          font-weight: 600;
+          position: absolute;
+          top: -12px;
+          right: 0;
+          z-index: 2;
+      }
+      .progress.orange:before{ border: 7px solid #fe3b3b; }
+      .progress.blue:before{ border: 7px solid #1a4966; }
+      .progress.green:before{ border: 7px solid #53aa2c; }
+      .progress.purple:before{ border: 7px solid #66406f; }
+      .progress.orange .progress-value{
+          border: 5px solid #fe3b3b;
+          color: #fe3b3b;
+      }
+      .progress.blue .progress-value{
+          border: 5px solid #1a4966;
+          color: #1a4966;
+      }
+      .progress.green .progress-value{
+          border: 5px solid #53aa2c;
+          color: #53aa2c;
+      }
+      .progress.purple .progress-value{
+          border: 5px solid #66406f;
+          color: #66406f;
+      }
+      @-webkit-keyframes animate-positive{
+          0%{ width: 0; }
+      }
+      @keyframes animate-positive{
+          0%{ width: 0; }
+      }
+
+      /* LOADER */
+      .lds-hourglass {
+        display: inline-block;
+        position: relative;
+        width: 15px;
+        height: 15px;
+      }
+      .lds-hourglass:after {
+        content: " ";
+        display: block;
+        border-radius: 50%;
+        width: 0;
+        height: 0;
+        box-sizing: border-box;
+        border: 10px solid #fff;
+        border-color: #fff transparent #fff transparent;
+        animation: lds-hourglass 1.2s infinite;
+      }
+      @keyframes lds-hourglass {
+        0% {
+          transform: rotate(0);
+          animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        }
+        50% {
+          transform: rotate(900deg);
+          animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        100% {
+          transform: rotate(1800deg);
+        }
+      }
+
+  </style>
+</head>

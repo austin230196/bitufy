@@ -1,0 +1,98 @@
+<%- include("./partials/dashboard/head")  %>
+
+<body>
+
+  <%- include("./partials/dashboard/nav")  %>
+
+  <div class="container-fluid">
+		<div class="container" id="withdrawal_history">
+			<h1><i class="fas fa-comments-dollar"></i>
+               Withdrawal History</h1>
+               <p class="userId"><b>UserID</b>   :- &nbsp; <%=  userId %></p>
+               <div class="container-fluid history_container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                          <% for(let header of withdrawal_headers) {  %>
+                            <th scope="col" style="color: rgb(114, 20, 206)"><%= header %></th>
+                          <% }  %>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% if(withdrawals.length > 0) {  %>
+
+                          <% for(let i = 0;  i < withdrawals.length; i++) {  %>
+                            <tr>
+                              <th scope="row"><%= i + 1 %></th>
+                              <td>$<%= withdrawals[i].amount %></td>
+                              <td><%= withdrawals[i].code %></td>
+                              <td><%= fmtDate(withdrawals[i].createdAt) %></td>
+                              <td><%= withdrawals[i].status %></td>
+                              <td><%= withdrawals[i].token %></td>
+                            </tr>
+                          <% }  %>
+
+                          <% } else {  %>
+                            <tr>
+                              <h3><em>No data found!</em></h3>
+                            </tr>
+                          <% } %>
+                      </tbody>
+                  </table>
+               </div>
+
+        </div> 
+
+
+        <hr 
+        style="background-color: grey; 
+        width: 100%; margin-top: 30px; 
+        margin-bottom: 10px"/>
+
+
+        <div class="container" id="fund_history">
+          <h1><i class="fas fa-cash-register"></i>
+               Fund History</h1>
+               <p class="userId"><b>UserID</b>  :- &nbsp; <%=  userId %></p>
+               <div class="container-fluid history_container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                          <% for(let header of deposit_headers) {  %>
+                            <th scope="col" style="color: rgb(114, 20, 206)"><%= header %></th>
+                          <% }  %>
+                        </tr>
+                      </thead>
+                        <tbody>
+                          <% if(deposits.length > 0) {  %>
+                            
+                            <% for(let i = 0;  i < deposits.length; i++) {  %>
+                              <tr>
+                                <th scope="row"><%= i + 1 %></th>
+                                <td>$<%= deposits[i].amount %></td>
+                                <td><%= deposits[i].code %></td>
+                                <td><%= fmtDate(deposits[i].createdAt) %></td>
+                                <td><%= deposits[i].status %></td>
+                                <td><%= deposits[i].token %></td>
+                              </tr>
+                            <% }  %>
+  
+                            <% } else {  %>
+                              <tr>
+                                <h3><em>No data found!</em></h3>
+                              </tr>
+                            <% } %>
+                        </tbody>
+                  </table>
+               </div>
+
+
+               <hr 
+               style="background-color: grey; 
+               width: 100%; margin-top: 30px; 
+               margin-bottom: 10px"/>
+		</div>
+  </div>
+
+
+<%- include("./partials/dashboard/footer")  %>

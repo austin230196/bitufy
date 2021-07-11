@@ -1,0 +1,96 @@
+<%- include("./partials/dashboard/head")  %>
+
+<body>
+
+  <%- include("./partials/dashboard/nav")  %>
+
+  <div class="container-fluid">
+		<div class="container" id="withdraw">
+			<h1><i class="fas fa-comments-dollar"></i>
+               Withdraw</h1>
+               <p>Please Note that the minimum withdrawal amount is $100 and it may
+                   take up to five (5) working days. Contact Bitufy withdrawal code to 
+                   complete and verify withdrawal status.
+               </p>
+
+               <hr 
+               style="background-color: grey; 
+               width: 100%; margin-top: 30px; 
+               margin-bottom: 10px"/>
+               
+               <div id="withdraw_address">
+                <p id="withdrawal_feedback"></p>
+                   <div class="address_meta">
+
+                    <input type="hidden" id="userId" 
+                    value="<%=  meta.userId %>"
+                     name="userId" />
+
+                       <div class="form-group mb-3">
+                           <label for="withdrawal_amount">
+                               Withdrawal Amount:
+                           </label>
+                           <input type="text" id="withdrawal_amount" 
+                           required name="withdrawal_amount" />
+                       </div>
+
+                       <div class="form-group mb-3">
+                            <label for="withdrawal_code">
+                                Withdrawal Code:
+                            </label>
+                            <input type="text" id="withdrawal_code" 
+                            value="<%=  meta.withdrawal_code %>"
+                            disabled
+                            required name="withdrawal_code" />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="wallet_address">
+                                Wallet Address:
+                            </label>
+                            <input type="text" id="wallet_address"
+                            wallet="btc" 
+                            disabled
+                            value="<%= wallets[0] %>"
+                            required name="wallet_address" />
+                        </div>
+                        
+                        <div class="form-group mb-4">
+                            <label>
+                                Wallet Type:
+                            </label>
+
+                            <div class="form_radio d-inline-flex align-items-center">
+                                <input type="radio" id="btc" 
+                                address="<%= wallets[0] %>"
+                                name="btc" checked />
+                                <label for="btc">BTC</label>
+                           </div>
+
+                            <div class="form_radio d-inline-flex align-items-center">
+                                <input type="radio" id="eth" 
+                                address="<%= wallets[1] %>"
+                                name="eth" />
+                                <label for="eth">ETH</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <button class="btn withdrawn">
+                                Withdraw  <i class="fas fa-money-bill-wave"></i>
+                            </button>
+                        </div>
+                   </div>
+               </div>
+
+               <hr 
+               style="background-color: grey; 
+               width: 100%; margin-top: 30px; 
+               margin-bottom: 10px"/>
+
+
+		</div>
+  </div>
+
+
+<%- include("./partials/dashboard/footer")  %>

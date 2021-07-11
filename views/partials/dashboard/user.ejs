@@ -1,0 +1,57 @@
+<!-- Page content -->
+<div class="container-fluid">
+  
+    <div class="row" style="margin: 0; margin-bottom: 30px">
+      <div class="col-sm-12 col-md-12 col-xl-12 mb-2" style="padding: 0px">
+        <span id="chart_controls">
+          <button id="btc">BTC</button>
+          <button id="eth">ETH</button>
+        </span>
+      </div>
+      <div class="col-sm-12 col-md-12 col-xl-12" style="padding: 0px">
+        <div class="cal-convertor">
+          <div class="bitcoin"></div>
+          <div class="ethereum"></div>
+          <script src="/library/js/dashboard.js" async></script>
+        </div>
+      </div>
+    </div>
+
+    <div class="" style=" 
+    min-height: 40vh; margin-bottom: 15px;
+    ">
+                <!-- TradingView Widget BEGIN -->
+          <div class="tradingview-widget-container" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, .5) ">
+            <div id="tradingview_099e3"></div>
+            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP" rel="noopener" target="_blank"><span class="blue-text">BTCUSD Chart</span></a> by TradingView</div>
+            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+            <script type="text/javascript">
+            new TradingView.widget(
+            {
+              "width": "100%",
+              height: 500,
+            "symbol": "BITSTAMP:BTCUSD",
+            "interval": "15",
+            "timezone": "Etc/UTC",
+            "theme": "light",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "withdateranges": true,
+            "allow_symbol_change": true,
+            "studies": [
+              "EaseOfMovement@tv-basicstudies"
+            ],
+            "show_popup_button": true,
+            "popup_width": "1000",
+            "popup_height": "650",
+            "container_id": "tradingview_099e3"
+          }
+            );
+            </script>
+          </div>
+          <!-- TradingView Widget END -->
+        </div>
+    </div>
+</div>

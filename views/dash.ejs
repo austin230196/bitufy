@@ -1,0 +1,41 @@
+<%- include("./partials/dashboard/head")  %>
+
+<body>
+
+  <%- include("./partials/dashboard/nav")  %>
+
+<%  if(session.user.role === "user"){   %>
+          <div class="row container-fluid mb-4">
+            <%  for(let i = 0; i < 2; i++){  %>
+              <%- include("./partials/dashboard/balance", {meta})  %>
+            <%  }   %>
+          </div>
+<%   } else {   %>
+        <div class="container-fluid">
+          <%-  include("./partials/dashboard/admin_card")  %>
+        </div>
+        <%- include("./partials/dashboard/dash_card")  %>
+<%   } %>
+
+
+
+<!-- Card stats -->
+<%  if(session.user.role === "user"){   %>
+          <div class="row container-fluid">
+            <%  for(let d of card_data){  %>
+                    <%- include("./partials/dashboard/card", {meta: d})  %>
+            <%  } %>
+          </div>
+<%   } %>
+
+    
+    <% if(session.user.role === "user"){  %>
+      <%- include("./partials/dashboard/user")  %>
+    <% }  else if(session.user.role === "admin") {  %>
+      <div class="container-fluid mt-4">
+        <h1 class="admin_tally">Total Users</h1>
+          <%- include("./partials/dashboard/admin")  %>
+      </div>
+    <% }  %>
+
+<%- include("./partials/dashboard/footer")  %>

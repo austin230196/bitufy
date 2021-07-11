@@ -1,0 +1,46 @@
+
+<!--Table-->
+<table class="table table-striped d-flex 
+flex-column align-items-center table-hover
+justify-content-center table-responsive"
+style="
+overflow-x: auto;
+overflow-y: auto;
+">
+
+    <!--Table head-->
+    <thead>
+      <tr class="table-info">
+          <%  for(let h of userHeaders){  %>
+            <th scope="col"><%= h %></th>
+          <%  } %>
+      </tr>
+    </thead>
+    <!--Table head-->
+  
+    <!--Table body-->
+    <tbody id="admin_tbody">
+
+      <%  for(let i = 0; i < users.length; i++){   %>
+        <tr>
+          <th scope="row"><%= i + 1 %></th>
+          <td><%= users[i].full_name  %></td>
+          <td><%= users[i].email  %></td>
+          <td><%= users[i].username  %></td>
+          <td><%= users[i].authorization  %></td>
+          <td><% users[i].referredBy ?  
+            users[i].referredBy :  "N/A" %></td>
+          <td><%= users[i].verified  %></td>
+          <td><%= users[i].referrals  %></td>
+          <td><%= users[i].refId  %></td>
+          <td><%= fmtDate(users[i].createdAt)  %></td>
+          <td><%= users[i].country  %></td>
+          <td><%= users[i].phone  %></td>
+        </tr>
+      <%  } %>
+     
+    </tbody>
+    <!--Table body-->
+  
+  </table>
+  <!--Table-->

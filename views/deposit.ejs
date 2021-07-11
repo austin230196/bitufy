@@ -1,0 +1,23 @@
+<%- include("./partials/dashboard/head")  %>
+
+<body>
+
+  <%- include("./partials/dashboard/nav")  %>
+
+  <div class="container-fluid">
+	  <%  if(meta.deposited){  %>
+
+		<div class="container" id="fund_order">
+			
+		</div>
+
+
+	  <%  } else { %>
+
+		  <%- include("./partials/deposited/fund")  %>
+
+	  <%  }   %>
+  </div>
+
+
+<%- include("./partials/dashboard/footer")  %>

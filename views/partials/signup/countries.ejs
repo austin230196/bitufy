@@ -1,0 +1,8 @@
+<select id="country" 
+class="custom-select d-block w-100" 
+name="code">
+<option value="">Choose...</option>
+<%  for(var i=0; i < countries.length; i++){  %>
+    <option value="<%= countries[i].code %>"><%= countries[i].name %></option>
+<%  } %>
+</select>

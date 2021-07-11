@@ -1,0 +1,62 @@
+<%- include("./partials/dashboard/head")  %>
+
+<body>
+
+  <%- include("./partials/dashboard/nav")  %>
+
+  <div class="container-fluid" style="min-height: 100vh;">
+		<div class="container" id="profile">
+			<h1><i class="fas fa-user-edit"></i>
+               Profile Details</h1>
+            <p>
+                Please, Complete your profile data by filling the form with the correct data.
+            </p>
+            <p>
+                <b>NOTE:</b>
+                Please make sure the data in the different fields are correct 
+                before submitting..
+            </p>
+
+               <hr 
+               style="background-color: grey; 
+               width: 100%; margin-top: 10px; 
+               margin-bottom: 10px"/>
+               
+               <div id="profile_data">
+                <p id="profile_data_feedback"></p>
+                   <div class="profile_data_meta">
+                    <% for(let p of profileData) {  %>
+                        <div class="profile_form mb-4">
+                            <label>
+                                <%= p.placeholder %>
+                            </label>
+                            <input type="<%= p.type %>" 
+                            value="<%= user[p.name] %>"
+                            name="<%= p.name %>"  class="input"
+                            placeholder="<%= p.placeholder %>"
+                            required="<%= p.required %>"
+                            />
+                        </div>
+                    <% }  %>
+
+                    <div class="mt-5">
+                        <%- include("./partials/imageUploader/form")  %>
+                    </div>
+                
+                        <div class="profile_form mt-5">
+                            <button class="btn profile" id="profile_btn">
+                                Update Profile
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+
+                   </div>
+               </div>
+               <hr
+               style="background-color: grey; 
+               width: 100%; margin-top: 30px; 
+               margin-bottom: 10px"/>
+		</div>
+  </div>
+
+<%- include("./partials/dashboard/footer")  %>

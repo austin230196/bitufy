@@ -1,0 +1,74 @@
+<%- include("./partials/dashboard/head")  %>
+
+<body>
+
+  <%- include("./partials/dashboard/nav")  %>
+
+
+<div class="container-fluid">
+    <div class="container"  id="settings">
+    <h1><i class="fas fa-user-lock"></i>
+      Change Password</h1>
+      <p>
+          <b>NOTE:</b>
+          Once your password has been updated, you will be logged out 
+          of your account, when logging in make sure to use the new password.
+      </p>
+
+      <hr 
+      style="background-color: grey; 
+      width: 100%; margin-top: 10px; 
+      margin-bottom: 10px"/>
+
+      <div id="fund_address">
+        <p id="settings_feed"></p>
+            <div class="form-group mb-4">
+                  <label for="old_password">Old Password: </label>
+                  <input type="password" name="old_password" id="old_password"
+                  placeholder="Enter Current Password*" class="input" />
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="new_password">New Password: </label>
+                <input type="password" name="new_password" id="new_password"
+                placeholder="Enter New Password*" class="input"/>
+                <p id="new_pass_feed">
+                  <em>
+                      <small>
+                          Password should be greater than 5 characters
+                      </small>
+                  </em>
+              </p>
+           </div>
+
+            <div class="form-group mb-4">
+                <label for="re_new_password">Re-Type New Password: </label>
+                <input type="password" name="re_new_password" id="re_new_password"
+                placeholder="Retype New Password*" class="input"/>
+                <p  id="re_pass_feed">
+                  <em>
+                      <small>
+                          The passwords don't match.
+                      </small>
+                  </em>
+              </p>
+          </div>
+
+          <div class="form-group">
+            <button class="btn profile" id="settings_btn" disabled>
+                 Update  <i class="fas fa-wrench"></i>
+            </button>
+          </div>
+      </div>
+
+      <hr 
+      style="background-color: grey; 
+      width: 100%; margin-top: 30px; 
+      margin-bottom: 10px"/>
+      
+</div>
+</div>
+
+
+
+<%- include("./partials/dashboard/footer")  %>

@@ -1,0 +1,23 @@
+<%- include("./partials/header") %>
+<body>
+
+<%- include("./partials/nav") %>
+<div class="verify">
+    <div id="verify" class="alert" 
+    style="
+    width: 100%;
+    margin-top: 35px;
+    ">
+    </div>
+<img src="/success.svg" class="verify_img" alt="successful" />
+<h1>Thanks!!</h1>
+<p>Check your email to confirm your account.</p>
+<area>Didn't recieve it? <a class="resend" 
+style="cursor: pointer; color: rgb(114, 20, 206); text-decoration: underline;"
+>Resend verification email</a> </area>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/library/js/auth.js"></script>
+<%-    include("./partials/footer")   %>
