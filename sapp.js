@@ -34,7 +34,7 @@ const port = process.env.PORT;
 const url = "mongodb+srv://austinakamelu:austin_1996@cluster0.3dohv.mongodb.net/bitufy"
 const sapp = express();
 const store = new MongoStore({
-    uri: process.env.MONGO_URL || url,
+    uri: url || process.env.MONGO_URL,
     collection: "sessions"
 })
 
@@ -895,7 +895,7 @@ sapp.get("/auth/signup", (req, res, next) => {
 })
 
 
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(url || process.env.MONGO_URL, {
     useNewUrlParser: true,
     useFindAndModify: true
 }).then(res => {
