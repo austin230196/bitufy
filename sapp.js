@@ -13,7 +13,7 @@ const csrf = require("csurf");
 const cors = require("cors");
 
 
-const _ = require("./utils/getEnv")();
+// const _ = require("./utils/getEnv")();
 const User = require("./models/user");
 const Investment = require("./models/investment");
 const Withdrawal = require("./models/withdrawal");
