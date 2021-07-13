@@ -18,6 +18,7 @@ scroll-behavior: smooth;
 body, html {
 margin: 0 !important;
 padding: 0 !important;
+font-size: 14px !important;
 }
 
 .auth-container {
@@ -32,7 +33,7 @@ width: 100%;
 
 .auth-nav {
     width: 100%;
-    padding: 20px;
+    padding: 5px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -43,16 +44,27 @@ width: 100%;
     width: 50px;
 }
 
-.auth-nav span {
+.auth-nav a span {
     font-size: 0.9rem;
 }
 
 .auth-body {
-    max-width: 700px;
+    max-width: 600px;
     min-width: 300px;
-    min-height: 70vh;
+    min-height: 45vh;
     background-color: var(--primary);
     box-shadow: var(--box-shdow);
+}
+
+.auth-footer {
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.auth-footer footer {
+  padding: 20px;
+  text-align: center;
+  color: white;
 }
 
 form {
@@ -74,8 +86,6 @@ form {
 
 .drawing img {
     width: 100%;
-    min-height: 60vh;
-    flex: 1;
 }
 
 .label {

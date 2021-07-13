@@ -11,6 +11,11 @@ const session = require("express-session");
 const MongoStore = require("connect-mongodb-session")(session);
 const csrf = require("csurf");
 const cors = require("cors");
+const helmet = require("helmet");
+const compression = require("compression");
+const sanitizeMongo = require("express-mongo-sanitize");
+const xss = require("xss-clean");
+const rateLimiter = require("express-rate-limit")
 
 
 // const _ = require("./utils/getEnv")();
@@ -30,7 +35,7 @@ const isAuth = require("./middleware/auth");
 
 
 
-const port = process.env.PORT;
+const port = process.env.PORT || 7070;
 const url = "mongodb+srv://austinakamelu:austin_1996@cluster0.3dohv.mongodb.net/bitufy"
 const sapp = express();
 const store = new MongoStore({
@@ -45,15 +50,19 @@ sapp.use(session({
     saveUninitialized: false,
     store
 }))
-sapp.use(express.urlencoded({ extended: false }))
-sapp.use(express.json());
+sapp.enable("trust proxy")
+sapp.use(express.urlencoded({ extended: true, limit: '10kb' }))
+sapp.use(express.json({limit: '10kb'}));
 sapp.use(csrf());
 sapp.use(cors())
+sapp.use(compression())
+sapp.use(helmet())
+sapp.use(xss());
+sapp.use(sanitizeMongo());
 sapp.use(express.static(path.join(__dirname, "public")))
 sapp.use((req, res, next) => {
     res.locals.token = req.session.csrfSecret;
     res.locals.session = req.session;
-    res.locals.isComplete = req.session.isComplete;
     next()
 })
 
@@ -359,6 +368,7 @@ sapp.get("/admin/referral", isAuth, async (req, res, next) => {
             path: "/admin/referral",
             name: "Referral",
             ref_link: referral_link,
+            isComplete: user.profile_complete,
             tableHeaders,
             tableData,
             fmtDate,
@@ -377,6 +387,7 @@ sapp.get("/admin/settings", isAuth, async (req, res, next) => {
         res.status(200).render("settings", {
             path: "/admin/settings",
             name: "Settings",
+            isComplete: user.profile_complete,
             code: user.country_code.toLocaleLowerCase(),
         })
     }catch(err){
@@ -398,6 +409,7 @@ sapp.get("/admin/profile", isAuth, async (req, res, next) => {
             path: "/admin/profile",
             name: "Profile",
             profileData,
+            isComplete: user.profile_complete,
             user,
             code: user.country_code.toLocaleLowerCase(),
         })
@@ -484,7 +496,7 @@ sapp.get("/admin/dashboard", isAuth, async (req, res, next) => {
             meta: investment,
             name: "Overview",
             month,
-            // isComplete: user.profile_complete,
+            isComplete: user.profile_complete,
             userHeaders: userTableHeaders,
             fmtDate,
             adminmeta: adminmeta._doc,
@@ -528,7 +540,6 @@ sapp.get("/admin/deposit", isAuth, async (req, res, next) => {
                 completed: false,
                 amount: 0
             })
-
             await newOrder.save()
         }
 
@@ -537,6 +548,7 @@ sapp.get("/admin/deposit", isAuth, async (req, res, next) => {
             path: "/admin/deposit",
             meta: newOrder,
             name: "Deposit",
+            isComplete: user.profile_complete,
             code: user.country_code.toLocaleLowerCase(),
             addresses: data
         })
@@ -571,6 +583,7 @@ sapp.get("/admin/withdraw", isAuth, async (req, res, next) => {
             path: "/admin/withdraw",
             wallets: [user.bitcoin, user.ethereum],
             meta: newOrder,
+            isComplete: user.profile_complete,
             code: user.country_code.toLocaleLowerCase(),
             name: "Withdraw",
         })
@@ -603,6 +616,7 @@ sapp.get("/admin/history", isAuth, async(req, res, next) => {
             deposit_headers,
             withdrawals,
             deposits,
+            isComplete: user.profile_complete,
             code: user.country_code.toLocaleLowerCase(),
             fmtDate
         })
@@ -685,7 +699,6 @@ sapp.post("/auth/login", async(req, res, next) => {
                         role: user.authorization,
                     };
                     req.session.isAuth = true;
-                    req.session.isComplete = user.profile_complete;
                     req.session.save()
                     if(user.verified){
                         res.json({
